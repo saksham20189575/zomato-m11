@@ -31,12 +31,21 @@ _DEFAULT_CORS_ORIGINS = "http://localhost:3000,http://127.0.0.1:3000"
 
 
 def parse_cors_origins(raw: str | None = None) -> list[str]:
-    """Parse comma-separated CORS origins from env (or an explicit string)."""
+    """Parse comma-separated CORS origins from env (or an explicit string).
+
+    Trailing slashes are stripped — browsers send Origin without a path, so
+    ``https://app.vercel.app/`` would otherwise never match.
+    """
     if raw is None:
         value = os.getenv("CORS_ORIGINS", _DEFAULT_CORS_ORIGINS)
     else:
         value = raw
-    return [origin.strip() for origin in value.split(",") if origin.strip()]
+    origins: list[str] = []
+    for part in value.split(","):
+        origin = part.strip().rstrip("/")
+        if origin:
+            origins.append(origin)
+    return origins
 
 
 app = FastAPI(

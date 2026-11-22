@@ -1,7 +1,10 @@
 import type { MetaResponse, RecommendRequest, ServiceResult } from "./types";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "http://localhost:8000";
+/**
+ * Same-origin path rewritten by Next.js to `NEXT_PUBLIC_API_URL`
+ * (`web/next.config.ts`). Avoids cross-origin/CORS failures on Vercel.
+ */
+const API_BASE = "/backend";
 
 async function parseError(res: Response): Promise<string> {
   try {

@@ -73,12 +73,17 @@ export function PreferencesPanel({
               className="w-full appearance-none rounded-lg border border-white/[0.08] bg-surface-container-lowest/90 py-2 pl-9 pr-3 text-body-sm text-on-surface transition-all focus:border-primary-container focus:outline-none focus:ring-1 focus:ring-primary-container/40"
               value={prefs.location}
               onChange={(e) => onChange({ location: e.target.value })}
+              disabled={locations.length === 0}
             >
-              {locations.map((loc) => (
-                <option key={loc} value={loc}>
-                  {loc}
-                </option>
-              ))}
+              {locations.length === 0 ? (
+                <option value="">Loading locations…</option>
+              ) : (
+                locations.map((loc) => (
+                  <option key={loc} value={loc}>
+                    {loc}
+                  </option>
+                ))
+              )}
             </select>
           </div>
           <span className="text-label-sm text-outline">

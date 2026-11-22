@@ -36,3 +36,12 @@ def test_parse_cors_origins_ignores_empty_segments() -> None:
         "http://localhost:3000",
         "https://x.vercel.app",
     ]
+
+
+def test_parse_cors_origins_strips_trailing_slashes() -> None:
+    assert parse_cors_origins(
+        "http://localhost:3000/,https://zomato-m11.vercel.app/"
+    ) == [
+        "http://localhost:3000",
+        "https://zomato-m11.vercel.app",
+    ]

@@ -168,7 +168,9 @@ export function TasteRankApp() {
               </p>
               {metaError && (
                 <p className="mt-2 rounded-lg border border-error/30 bg-error-container/20 px-3 py-2 text-body-sm text-error">
-                  API unreachable: {metaError}. Start FastAPI on port 8000.
+                  API unreachable: {metaError}. Check that the backend is up and
+                  that NEXT_PUBLIC_API_URL points at it (local: start FastAPI on
+                  port 8000).
                 </p>
               )}
             </div>
