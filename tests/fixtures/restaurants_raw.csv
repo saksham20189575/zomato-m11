@@ -1,0 +1,17 @@
+url,address,name,online_order,book_table,rate,votes,phone,location,rest_type,dish_liked,cuisines,approx_cost(for two people),reviews_list,menu_item,listed_in(type),listed_in(city)
+https://example.com/a,942 Main Road Banashankari Bangalore,Jalsa,Yes,Yes,4.1/5,775,,Banashankari,Casual Dining,Pasta,"North Indian, Mughlai, Chinese",800,[],[],Buffet,Banashankari
+https://example.com/b,2nd Floor Banashankari Bangalore,Spice Elephant,Yes,No,4.1/5,787,,Banashankari,Casual Dining,Momos,"Chinese, North Indian, Thai",800,[],[],Buffet,Banashankari
+https://example.com/c,Indiranagar Bangalore,Truffles,Yes,No,4.4/5,4500,,Indiranagar,Cafe,Burgers,"Cafe / American | Continental","1,200",[],[],Cafes,Indiranagar
+https://example.com/d,Koramangala 5th Block Bengaluru,Meghana Foods,Yes,No,4.2/5,3000,,Koramangala 5th Block,Casual Dining,Biryani,"Andhra, Biryani",600,[],[],Delivery,Koramangala 5th Block
+https://example.com/e,BTM Bangalore,Empire Restaurant,Yes,No,4.0/5,2000,,BTM,Casual Dining,Kebab,"North Indian / Mughlai",500,[],[],Delivery,BTM
+https://example.com/f,HSR Bangalore,Corner House,Yes,No,4.3/5,1800,,HSR,Dessert Parlor,Ice Cream,Ice Cream,300,[],[],Desserts,HSR
+https://example.com/g,Whitefield Bangalore,Absolute Barbecues,Yes,Yes,4.5/5,5000,,Whitefield,Casual Dining,Buffet,"North Indian, BBQ","1,500",[],[],Buffet,Whitefield
+https://example.com/h,JP Nagar Bangalore,Domino's Pizza,Yes,No,3.5/5,400,,JP Nagar,Quick Bites,Pizza,"Pizza, Fast Food",400,[],[],Delivery,JP Nagar
+https://example.com/i,Marathahalli Bangalore,Biryani Blues,Yes,No,3.9/5,900,,Marathahalli,Quick Bites,Biryani,"Biryani | North Indian",450,[],[],Delivery,Marathahalli
+https://example.com/j,Jayanagar Bangalore,CTR,No,No,4.7/5,6000,,Jayanagar,Quick Bites,Dosa,South Indian,150,[],[],Dine-out,Jayanagar
+https://example.com/k,Bellandur Bangalore,New Place,Yes,No,NEW,10,,Bellandur,Cafe,,Cafe,200,[],[],Cafes,Bellandur
+https://example.com/l,MG Road Bangalore,Dash Spot,Yes,No,-,5,,MG Road,Cafe,,Italian,350,[],[],Cafes,MG Road
+https://example.com/m,Church Street Bangalore,,Yes,No,4.0/5,20,,Church Street,Cafe,,Italian,500,[],[],Cafes,Church Street
+https://example.com/n,Banashankari Bangalore,No Cuisine Spot,Yes,No,3.8/5,30,,Banashankari,Cafe,,,400,[],[],Cafes,Banashankari
+https://example.com/o,HSR Bangalore,Currency Cafe,Yes,No,3.8 /5,120,,HSR,Cafe,Coffee,"Cafe, Beverages",₹550,[],[],Cafes,HSR
+https://example.com/p,Unknown Area,No Address Locality,Yes,No,3.6/5,40,,Mystery Locality,Cafe,,Chinese,250,[],[],Cafes,Mystery

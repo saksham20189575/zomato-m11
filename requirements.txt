@@ -1,0 +1,11 @@
+# Runtime deps for TasteRank API (Railway / Nixpacks).
+# Prefer `pip install -e ".[api]"` locally; this file mirrors core + api extras.
+datasets>=2.19.0
+pandas>=2.2.0
+openai>=1.40.0
+truststore>=0.10.0
+python-dotenv>=1.0.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0

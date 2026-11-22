@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior: none;
+    min-height: 100vh;
+    background: #0b0d12;
+    color: #e2e2e9;
+    font-family: var(--font-outfit), system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: #ff5351;
+    color: #5c0008;
+  }
+}
+
+/* Custom range accent */
+input[type="range"] {
+  accent-color: #ff5351;
+}
+
+@keyframes tr-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.animate-tr-pulse {
+  animation: tr-pulse 1.6s ease-in-out infinite;
+}
