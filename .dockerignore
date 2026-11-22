@@ -23,6 +23,7 @@ web/out/
 stitch_tasterank_dark_web_ui/
 docs/
 tests/
+scripts/preview_*.py
 *.md
 !README.md
 .DS_Store

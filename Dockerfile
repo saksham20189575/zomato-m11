@@ -11,6 +11,7 @@ RUN apt-get update \
 COPY pyproject.toml README.md ./
 COPY src ./src
 COPY app ./app
+COPY scripts/serve.py ./scripts/serve.py
 COPY scripts/start_api.sh ./scripts/start_api.sh
 
 RUN pip install --no-cache-dir -e ".[api]" \
@@ -21,5 +22,5 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
-# Shell script expands PORT; avoids literal "$PORT" when the platform skips shell expansion.
-CMD ["sh", "scripts/start_api.sh"]
+# Reads PORT from the environment. Never pass a literal "$PORT" to uvicorn.
+CMD ["python", "scripts/serve.py"]

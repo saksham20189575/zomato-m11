@@ -80,15 +80,16 @@ Both options are in-repo:
 
 Mount a Railway volume at `/data` when using the image.
 
-### 0.3 Bind host and `$PORT`
+### 0.3 Bind host and `PORT`
 
-Start via `scripts/start_api.sh` (Dockerfile `CMD`, `Procfile`, and `railway.toml`).
-The script expands `PORT` in-shell — a bare `uvicorn ... --port $PORT` on Railway
-can pass the literal string `$PORT` and fail with `Invalid value for '--port'`.
+Start with `python scripts/serve.py` (Dockerfile `CMD`, `Procfile`, and `railway.toml`).
+The script reads the `PORT` environment variable. Do **not** set `PORT` in Railway
+variables, and do **not** use a start command of `uvicorn ... --port $PORT` —
+Railway passes that text through unexpanded and uvicorn exits with
+`Invalid value for '--port': '$PORT'`.
 
 ```bash
-sh scripts/start_api.sh
-# equivalent: uvicorn app.api:app --host 0.0.0.0 --port "${PORT:-8000}"
+python scripts/serve.py
 ```
 
 ### 0.4 Frontend env (no code change if URL is set)
@@ -117,7 +118,7 @@ Commit Phase 0 changes to the branch you will deploy (e.g. `main`).
 | Setting | Value |
 |---|---|
 | Build | Dockerfile (`railway.toml`) or `pip install -e ".[api]"` |
-| Start | `sh scripts/start_api.sh` (expands `PORT`) |
+| Start | `python scripts/serve.py` (reads `PORT` from the environment) |
 | Watch paths | Prefer ignoring `web/` if configurable |
 
 ### 1.3 Environment variables (Railway)
@@ -134,6 +135,7 @@ Set from `.env.example` (never commit real keys):
 | `CORS_ORIGINS` | Yes (after 0.1) | Include Vercel URL + localhost for local UI → prod API testing |
 | `MAX_CANDIDATES` | Optional | Default `20` |
 | `DEFAULT_TOP_K` | Optional | Default `5` |
+| `PORT` | **Do not set** | Railway injects this. A value of `$PORT` causes the uvicorn crash |
 
 Omit secrets from GitHub Actions logs and screenshots.
 
