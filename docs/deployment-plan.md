@@ -82,10 +82,13 @@ Mount a Railway volume at `/data` when using the image.
 
 ### 0.3 Bind host and `$PORT`
 
-Start command (Dockerfile `CMD`, `Procfile`, and `railway.toml`):
+Start via `scripts/start_api.sh` (Dockerfile `CMD`, `Procfile`, and `railway.toml`).
+The script expands `PORT` in-shell — a bare `uvicorn ... --port $PORT` on Railway
+can pass the literal string `$PORT` and fail with `Invalid value for '--port'`.
 
 ```bash
-uvicorn app.api:app --host 0.0.0.0 --port $PORT
+sh scripts/start_api.sh
+# equivalent: uvicorn app.api:app --host 0.0.0.0 --port "${PORT:-8000}"
 ```
 
 ### 0.4 Frontend env (no code change if URL is set)
@@ -113,8 +116,8 @@ Commit Phase 0 changes to the branch you will deploy (e.g. `main`).
 
 | Setting | Value |
 |---|---|
-| Build | `pip install -e ".[api]"` (or Dockerfile build) |
-| Start | `uvicorn app.api:app --host 0.0.0.0 --port $PORT` |
+| Build | Dockerfile (`railway.toml`) or `pip install -e ".[api]"` |
+| Start | `sh scripts/start_api.sh` (expands `PORT`) |
 | Watch paths | Prefer ignoring `web/` if configurable |
 
 ### 1.3 Environment variables (Railway)

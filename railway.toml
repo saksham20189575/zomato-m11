@@ -6,7 +6,9 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "uvicorn app.api:app --host 0.0.0.0 --port $PORT"
+# Use the shell script so $PORT is expanded (Railway may not expand vars in a bare
+# "uvicorn ... --port $PORT" startCommand, which causes: Invalid value for '--port').
+startCommand = "sh scripts/start_api.sh"
 healthcheckPath = "/health"
 healthcheckTimeout = 120
 restartPolicyType = "ON_FAILURE"

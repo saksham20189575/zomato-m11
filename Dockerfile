@@ -11,12 +11,15 @@ RUN apt-get update \
 COPY pyproject.toml README.md ./
 COPY src ./src
 COPY app ./app
+COPY scripts/start_api.sh ./scripts/start_api.sh
 
-RUN pip install --no-cache-dir -e ".[api]"
+RUN pip install --no-cache-dir -e ".[api]" \
+    && chmod +x scripts/start_api.sh
 
 ENV CACHE_DIR=/data
 ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "uvicorn app.api:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Shell script expands PORT; avoids literal "$PORT" when the platform skips shell expansion.
+CMD ["sh", "scripts/start_api.sh"]
